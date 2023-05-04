@@ -1,9 +1,16 @@
 import { ChildrenRoot } from "../../../types/shared";
 import style from "./button.module.scss";
 
-export const Button = ({ children }: ChildrenRoot) => {
+type ButtonProps = {
+  type: "submit" | "button" | "reset";
+};
+
+export const Button = ({
+  children,
+  type = "button",
+}: ChildrenRoot & ButtonProps) => {
   return (
-    <button type="button" className={`${style["btn"]} ${style["btn--form"]}`}>
+    <button type={type} className={`${style["btn"]} ${style["btn--form"]}`}>
       {children}
     </button>
   );

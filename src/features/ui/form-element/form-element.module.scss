@@ -20,4 +20,11 @@
     font-size: 1rem;
     font-family: inherit;
   }
+
+  &__error {
+    padding-left: 1rem;
+    margin-top: 0.33rem;
+    font-size: 0.833rem;
+    color: var(--color-error);
+  }
 }
