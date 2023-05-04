@@ -6,6 +6,9 @@ import style from "./../form.module.scss";
 import { registerSchema } from "./registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { createUserWithEmailAndPassword } from "firebase/auth/cordova";
+import { auth } from "../../../lib/firebase";
+import { toast } from "react-toastify";
 
 type RegisterFormData = {
   email: string;
@@ -16,14 +19,29 @@ type RegisterFormData = {
 export const Register = () => {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterFormData>({
     resolver: yupResolver(registerSchema),
   });
 
-  const submitHandler = (data: RegisterFormData) => {
-    console.log(data);
+  const submitHandler = async (data: RegisterFormData) => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      toast.success("Succesfully created!", { autoClose: 2000 });
+      console.log(user);
+      reset();
+    } catch (err) {
+      if (err instanceof Error) {
+        toast.error(err.message, { autoClose: 2000 });
+      }
+    }
   };
 
   return (
