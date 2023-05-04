@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../../features/ui/button/button";
 import { FormElement } from "../../../features/ui/form-element/form-element";
 import { Wrapper } from "../../../features/ui/wrapper/wrapper";
@@ -26,20 +26,17 @@ export const Register = () => {
     resolver: yupResolver(registerSchema),
   });
 
+  const navigate = useNavigate();
+
   const submitHandler = async (data: RegisterFormData) => {
     try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-
-      toast.success("Succesfully created!", { autoClose: 2000 });
-      console.log(user);
+      await createUserWithEmailAndPassword(auth, data.email, data.password);
+      toast.success("Succesfully created!");
+      navigate("..");
       reset();
     } catch (err) {
       if (err instanceof Error) {
-        toast.error(err.message, { autoClose: 2000 });
+        toast.error(err.message);
       }
     }
   };
@@ -76,7 +73,7 @@ export const Register = () => {
           <Button type="submit">Register</Button>
           <p className={style["form__addition"]}>
             If you have account{" "}
-            <Link to="/login" className={style["form__link"]}>
+            <Link to=".." className={style["form__link"]}>
               login!
             </Link>
           </p>
