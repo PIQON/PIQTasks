@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="heading__primary visuallyhidden">
+        TODO App, create your own todo tasks and manage them.
+      </h1>
+      <header class="header">&nbsp;</header>
+      <div class="wrapper">
+        <main class="main">
+          <header class="main__header">
+            <h2 class="heading__secondary">Todo</h2>
+            <button class="btn btn--theme" data-theme-change>
+              <img
+                src="./src/assets/images/icon-sun.svg"
+                alt="Light Theme"
+                class="btn__image"
+                data-theme-icon
+              />
+            </button>
+          </header>
+          <form class="form">
+            <div class="edit">
+              <button class="btn btn--edit" data-isComplete="false">
+                &nbsp;
+              </button>
+            </div>
+            <input
+              type="text"
+              name="todo"
+              id="todo"
+              class="form__input"
+              placeholder="Create a new todo..."
+            />
+          </form>
+          <div class="todo-list" data-todos>
+            <div class="todo-item todo--complete">
+              <div class="edit">
+                <button class="btn btn--edit btn--complete">
+                  <img
+                    src="./src/assets/images/icon-check.svg"
+                    alt="Complete todo"
+                    class="btn__image"
+                  />
+                </button>
+              </div>
+              <span class="todo-item__title"
+                >Complete online JavaScript course</span
+              >
+            </div>
+            <div class="todo-item">
+              <div class="edit">
+                <button class="btn btn--edit">&nbsp;</button>
+              </div>
+              <span class="todo-item__title">Jog around the park 3x</span>
+            </div>
+            <div class="filter">
+              <span class="filter__items">5 items left</span>
+              <div class="filter__actions">
+                <button class="btn btn--filter">All</button>
+                <button class="btn btn--filter">Active</button>
+                <button class="btn btn--filter">Completed</button>
+              </div>
+              <button class="btn btn--filter">Clear Completed</button>
+            </div>
+            <div class="filter__actions filter__actions--mobile">
+              <button class="btn btn--filter">All</button>
+              <button class="btn btn--filter">Active</button>
+              <button class="btn btn--filter">Completed</button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

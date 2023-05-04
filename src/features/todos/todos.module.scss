@@ -1,0 +1,9 @@
+@use "./../../scss/abstracts/mixins" as *;
+
+.todos {
+  padding: 0 1rem;
+  margin-top: -10rem;
+  &__header {
+    @include flex-mother(row, center, space-between);
+  }
+}

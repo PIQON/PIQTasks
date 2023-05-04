@@ -1,3 +1,5 @@
+@use "./../../../scss/abstracts/mixins" as *;
+
 .btn {
   cursor: pointer;
   border: none;
@@ -9,5 +11,8 @@
     border-radius: 6px;
     color: #000;
     background-color: var(--color-text);
+  }
+  &--theme {
+    @include flex-mother();
   }
 }

@@ -3,6 +3,7 @@ import { Root } from "./pages/root/root";
 import { Login } from "./pages/forms/login/login";
 import { Register } from "./pages/forms/register/register";
 import { ProtectedRoute } from "./pages/protected-route/protected-route";
+import { Dashboard } from "./pages/dashboard/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: (
           <ProtectedRoute>
-            <h1>Hello</h1>
+            <Dashboard />
           </ProtectedRoute>
         ),
       },

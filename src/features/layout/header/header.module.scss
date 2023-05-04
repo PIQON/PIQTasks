@@ -1,0 +1,22 @@
+@use "./../../../scss/abstracts/mixins" as *;
+
+.header {
+  height: 15rem;
+  background-image: url("./../../../assets/images/bg-desktop-dark.jpg");
+  background-size: cover;
+  background-position: center;
+
+  @include media(43.75rem) {
+    background-image: url("./../../../assets/images/bg-mobile-dark.jpg");
+    background-position: top;
+  }
+}
+
+[data-theme="light"] {
+  .header {
+    background-image: url("./../../../assets/images/bg-desktop-light.jpg");
+    @include media(43.75rem) {
+      background-image: url("./../../../assets/images/bg-mobile-light.jpg");
+    }
+  }
+}

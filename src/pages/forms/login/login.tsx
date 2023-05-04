@@ -63,7 +63,9 @@ export const Login = () => {
             {...register("password")}
             error={errors.password?.message}
           />
-          <Button type="submit">Login</Button>
+          <Button type="submit" classNames={["btn", "btn--form"]}>
+            Login
+          </Button>
           <p className={style["form__addition"]}>
             If you dont have account{" "}
             <Link to="/register" className={style["form__link"]}>
