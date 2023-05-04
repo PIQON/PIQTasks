@@ -1,3 +1,2 @@
-body {
-  background-color: red;
-}
+@use "./base/reset" as *;
+@use "./abstracts/variables" as *;

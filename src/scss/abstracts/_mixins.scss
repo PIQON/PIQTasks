@@ -1,0 +1,16 @@
+@mixin media($media) {
+  @media (max-width: $media) {
+    @content;
+  }
+}
+
+@mixin flex-mother(
+  $flexDirection: row,
+  $alignItems: center,
+  $justifyContent: center
+) {
+  display: flex;
+  flex-direction: $flexDirection;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}
