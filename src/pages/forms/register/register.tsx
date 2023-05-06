@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 import { createUserWithEmailAndPassword } from "firebase/auth/cordova";
 import { auth } from "../../../lib/firebase";
 import { toast } from "react-toastify";
-import "firebase/database";
 
 type RegisterFormData = {
   email: string;
@@ -31,13 +30,11 @@ export const Register = () => {
 
   const submitHandler = async (data: RegisterFormData) => {
     try {
-      const user = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         data.email,
         data.password
       );
-      await firebase;
-      console.log(user);
       toast.success("Succesfully created!");
       navigate("..");
       reset();
