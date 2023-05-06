@@ -10,7 +10,6 @@ export const AuthContextProvider = ({ children }: ChildrenRoot) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
-      console.log(firebaseUser);
       if (firebaseUser) {
         setUser(firebaseUser);
       }
