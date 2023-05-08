@@ -29,7 +29,7 @@ export const TodosForm = () => {
   const handleSubmit = async (ev: FormEvent) => {
     ev.preventDefault();
     mutation.mutate({
-      user_id: user.uid,
+      user_id: user?.uid,
       title,
       isComplete,
     });

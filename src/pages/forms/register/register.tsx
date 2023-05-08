@@ -30,11 +30,7 @@ export const Register = () => {
 
   const submitHandler = async (data: RegisterFormData) => {
     try {
-      await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
+      await createUserWithEmailAndPassword(auth, data.email, data.password);
       toast.success("Succesfully created!");
       navigate("..");
       reset();

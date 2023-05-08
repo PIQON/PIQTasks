@@ -2,23 +2,33 @@
 
 .form-container {
   @include flex-mother();
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 100vh;
   .form {
     @include flex-mother(column, stretch, flex-start);
-    width: 50%;
-    min-width: 20rem;
+    min-width: 30rem;
     gap: 2.074rem;
     padding: 2.074rem;
     background-color: var(--color-primary-300);
     border: 1px solid var(--color-neutral-300);
-    color: var(--color-text);
+    color: var(--color-primary-200);
+    @include media(32.5rem) {
+      min-width: 20rem;
+      padding: 2.074rem 1rem;
+    }
+    &__title {
+      font-weight: 600;
+    }
     &__addition {
-      font-size: 0.833rem;
+      font-size: 1rem;
       text-align: center;
     }
     &__link:link,
     &__link:visited {
-      color: var(--color-text);
+      color: var(--color-primary-200);
     }
   }
 }

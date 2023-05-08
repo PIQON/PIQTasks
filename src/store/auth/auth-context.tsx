@@ -15,8 +15,7 @@ export const AuthContextProvider = ({ children }: ChildrenRoot) => {
       }
     });
 
-    return unsubscribe;
+    return () => unsubscribe();
   }, []);
-
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };

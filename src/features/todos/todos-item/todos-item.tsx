@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { TodosEdit } from "../todos-edit/todos-edit";
 import style from "./todos-item.module.scss";
-import { collection, doc } from "firebase/firestore";
-import { firestore } from "../../../lib/firebase";
-import { useFirestoreDocumentMutation } from "@react-query-firebase/firestore";
+import { TodosEdit } from "../todos-edit/todos-edit";
+import {
+  useFirestoreDocumentDeletion,
+  useFirestoreDocumentMutation,
+} from "@react-query-firebase/firestore";
+import { mutateFirebaseTodoData } from "../todos-service/todos-service";
+import { Button } from "../../ui/button/button";
 import { toast } from "react-toastify";
+
+import iconClose from "./../../../assets/images/icon-cross.svg";
 
 export type TodosItemData = {
   id: string;
@@ -13,35 +17,51 @@ export type TodosItemData = {
 };
 
 export const TodosItem = ({ id, title, isComplete }: TodosItemData) => {
-  const ref = collection(firestore, "todos");
-  const query = doc(ref, id);
-  const mutation = useFirestoreDocumentMutation(query, { merge: true });
-  const [isCompleteState, setIsCompleteState] = useState(isComplete);
+  const editMutation = useFirestoreDocumentMutation(
+    mutateFirebaseTodoData(id),
+    { merge: true },
+    {
+      onSuccess() {
+        toast.success("Succesfully edited todo!");
+      },
+      onError(err) {
+        toast.error(err.message);
+      },
+    }
+  );
+  const deleteMutation = useFirestoreDocumentDeletion(
+    mutateFirebaseTodoData(id),
+    {
+      onSuccess() {
+        toast.success("Succesfully deleted todo!");
+      },
+      onError(err) {
+        toast.error(err.message);
+      },
+    }
+  );
 
   const editTodo = () => {
-    setIsCompleteState((prevState) => !prevState);
-    mutation.mutate(
-      {
-        isComplete: !isCompleteState,
-      },
-      {
-        onSuccess() {
-          toast.success("Succesfully edited todo!");
-        },
-        onError(err) {
-          toast.error(err.message);
-        },
-      }
-    );
+    editMutation.mutate({
+      isComplete: !isComplete,
+    });
+  };
+
+  const deleteTodo = () => {
+    deleteMutation.mutate();
   };
 
   return (
     <div className={style["todo-item"]}>
-      <TodosEdit
-        isCompleteState={isCompleteState}
-        changeCompleteState={editTodo}
-      />
+      <TodosEdit isCompleteState={isComplete} changeCompleteState={editTodo} />
       <span className={style["todo-item__title"]}>{title}</span>
+      <Button
+        type="button"
+        classNames={["btn", "btn--close", "btn--theme"]}
+        onClick={deleteTodo}
+      >
+        <img src={iconClose} alt="Delete todo" />
+      </Button>
     </div>
   );
 };

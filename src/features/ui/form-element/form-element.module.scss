@@ -5,12 +5,13 @@
   gap: 0.33rem;
   width: 100%;
   &__label {
+    font-weight: 600;
     padding-left: 1rem;
-    color: var(--color-text);
+    color: var(--color-primary-200);
   }
 
   &__input {
-    height: 2.074rem;
+    height: 3rem;
     width: 100%;
     border: 1px solid var(--color-neutral-300);
     border-radius: 6px;

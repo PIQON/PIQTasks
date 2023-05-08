@@ -7,10 +7,14 @@
   font-family: inherit;
   &--form {
     width: 100%;
-    height: 2.074rem;
+    height: 3rem;
     border-radius: 6px;
     color: #000;
-    background-color: var(--color-text);
+    background-color: var(--color-primary-200);
+    color: var(--color-primary-300);
+    font-weight: 600;
+    font-size: 1.2rem;
+    border: 1px solid var(--color-neutral-300);
   }
   &--theme {
     @include flex-mother();
@@ -28,5 +32,9 @@
       var(--color-gradient-400),
       var(--color-gradient-300)
     );
+  }
+
+  &--close {
+    margin-left: auto;
   }
 }

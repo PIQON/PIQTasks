@@ -1,39 +1,40 @@
-import { TodosItem, TodosItemData } from "../todos-item/todos-item";
-import { query, collection, where, DocumentData } from "firebase/firestore";
-import style from "./todos-list.module.scss";
-import { firestore } from "../../../lib/firebase";
+import { TodosItem } from "../todos-item/todos-item";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 
 import { useAuthContext } from "../../../store/auth/use-auth-context";
 import { Spinner } from "../../ui/spinner/spinner";
+import {
+  getUserFilteredFirebaseData,
+  getUserFirebaseData,
+} from "../todos-service/todos-service";
+
+import style from "./todos-list.module.scss";
+import { useTodosFilterContext } from "../store/filter/use-todos-filter-context";
 
 export const TodosList = () => {
   const user = useAuthContext();
-  const ref = query(
-    collection(firestore, "todos"),
-    where("user_id", "==", user.uid)
-  );
-  const todos = useFirestoreQuery(["todos"], ref, { subscribe: true });
-
-  console.log(todos);
+  const { filter } = useTodosFilterContext();
+  const todosQuery =
+    filter === "all"
+      ? getUserFirebaseData(user)
+      : getUserFilteredFirebaseData(user, "isComplete", filter === "active");
+  const todos = useFirestoreQuery(["todos"], todosQuery, {
+    subscribe: true,
+  });
 
   const snapshot = todos.data;
 
-  if (!snapshot) return <></>;
+  if (todos.isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className={style["todos-list"]}>
-      {todos.isLoading && <Spinner />}
-      {snapshot.docs.length > 0 ? (
+      {snapshot && snapshot.docs.length > 0 ? (
         snapshot?.docs.map((docSnapshot) => {
           const data = docSnapshot.data();
           return (
-            <TodosItem
-              key={docSnapshot.id}
-              id={docSnapshot.id}
-              title={data.title}
-              isComplete={data.isComplete}
-            />
+            <TodosItem {...data} key={docSnapshot.id} id={docSnapshot.id} />
           );
         })
       ) : (

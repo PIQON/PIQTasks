@@ -1,4 +1,8 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import { Root } from "./pages/root/root";
 import { Login } from "./pages/forms/login/login";
 import { Register } from "./pages/forms/register/register";
@@ -25,6 +29,7 @@ const router = createBrowserRouter([
             <Dashboard />
           </ProtectedRoute>
         ),
+        errorElement: <Navigate to="/" />,
       },
     ],
   },
