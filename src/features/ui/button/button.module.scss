@@ -34,6 +34,15 @@
     );
   }
 
+  &--filter {
+    font-weight: 600;
+    color: var(--color-primary-100);
+    transition: color 0.3s;
+    &:hover {
+      color: var(--color-universal-400);
+    }
+  }
+
   &--close {
     margin-left: auto;
   }

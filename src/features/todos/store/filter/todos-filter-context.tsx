@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { ChildrenRoot } from "../../../../types/shared";
 
-type Filter = "all" | "active" | "completed";
+export type Filter = "All" | "Active" | "Completed";
 
 type TodosFilterContextData = {
   filter: Filter;
@@ -13,7 +13,7 @@ export const TodosFilterContext = createContext<TodosFilterContextData | null>(
 );
 
 export const TodosFilterContextProvider = ({ children }: ChildrenRoot) => {
-  const [filter, setFilter] = useState<Filter>("all");
+  const [filter, setFilter] = useState<Filter>("All");
 
   const changeFilter = (newFilterState: Filter) => {
     setFilter(newFilterState);

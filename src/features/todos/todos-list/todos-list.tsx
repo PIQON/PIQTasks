@@ -10,17 +10,16 @@ import {
 
 import style from "./todos-list.module.scss";
 import { useTodosFilterContext } from "../store/filter/use-todos-filter-context";
+import { TodosFilter } from "../todos-filter/todos-filter";
 
 export const TodosList = () => {
   const user = useAuthContext();
   const { filter } = useTodosFilterContext();
   const todosQuery =
-    filter === "all"
+    filter === "All"
       ? getUserFirebaseData(user)
-      : getUserFilteredFirebaseData(user, "isComplete", filter === "active");
-  const todos = useFirestoreQuery(["todos"], todosQuery, {
-    subscribe: true,
-  });
+      : getUserFilteredFirebaseData(user, "isComplete", filter === "Active");
+  const todos = useFirestoreQuery(["todos", { filter }], todosQuery);
 
   const snapshot = todos.data;
 
@@ -40,6 +39,7 @@ export const TodosList = () => {
       ) : (
         <p className={style["todos-list__results"]}>No todos found.</p>
       )}
+      <TodosFilter />
     </div>
   );
 };
