@@ -54,7 +54,13 @@ export const TodosItem = ({ id, title, isComplete }: TodosItemData) => {
   return (
     <div className={style["todo-item"]}>
       <TodosEdit isCompleteState={isComplete} changeCompleteState={editTodo} />
-      <span className={style["todo-item__title"]}>{title}</span>
+      <span
+        className={`${style["todo-item__title"]} ${
+          isComplete && style["todo-item__title--complete"]
+        }`}
+      >
+        {title}
+      </span>
       <Button
         type="button"
         classNames={["btn", "btn--close", "btn--theme"]}

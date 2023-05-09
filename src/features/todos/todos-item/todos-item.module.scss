@@ -7,5 +7,9 @@
   &__title {
     padding-left: 1rem;
     color: var(--color-primary-200);
+    &--complete {
+      text-decoration: line-through;
+      color: var(--color-neutral-400);
+    }
   }
 }
