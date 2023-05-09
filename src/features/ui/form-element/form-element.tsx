@@ -9,6 +9,7 @@ type FormElementProps = {
   type: InputType;
   placeholder?: string;
   error?: string;
+  onChange?: () => void;
 };
 
 export const FormElement = forwardRef<HTMLInputElement, FormElementProps>(

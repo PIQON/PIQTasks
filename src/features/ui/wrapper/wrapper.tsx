@@ -10,7 +10,11 @@ export const Wrapper = ({
   maxWidth,
 }: ChildrenRoot & WrapperProps) => {
   return (
-    <div className={style["wrapper"]} style={{ maxWidth }}>
+    <div
+      className={style["wrapper"]}
+      style={{ maxWidth }}
+      data-testid="wrapper"
+    >
       {children}
     </div>
   );
