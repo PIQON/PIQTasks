@@ -6,7 +6,6 @@ type TodosFilterProps = {
 };
 
 export const TodosFilter = ({ itemsLeft = 0 }: TodosFilterProps) => {
-  console.log(itemsLeft);
   return (
     <div className={style["filter"]}>
       <span className={style["filter__items"]}>{itemsLeft} items left</span>

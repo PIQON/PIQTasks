@@ -8,6 +8,8 @@ import { useFirestoreCollectionMutation } from "@react-query-firebase/firestore"
 import { toast } from "react-toastify";
 
 export const TodosForm = () => {
+  const [title, setTitle] = useState("");
+  const [isComplete, setIsComplete] = useState(false);
   const user = useAuthContext();
   const ref = collection(firestore, "todos");
   const mutation = useFirestoreCollectionMutation(ref, {
@@ -18,8 +20,6 @@ export const TodosForm = () => {
       toast.error(err.message);
     },
   });
-  const [isComplete, setIsComplete] = useState(false);
-  const [title, setTitle] = useState("");
 
   const handleInputChange = (ev: FormEvent) => {
     const target = ev.target as HTMLInputElement;

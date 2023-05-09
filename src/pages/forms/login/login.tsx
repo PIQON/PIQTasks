@@ -11,6 +11,7 @@ import { loginSchema } from "./loginSchema";
 import { toast } from "react-toastify";
 import { auth } from "../../../lib/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { Main } from "../../../features/layout/main/main";
 
 type LoginFormData = {
   email: string;
@@ -43,37 +44,42 @@ export const Login = () => {
   };
 
   return (
-    <Wrapper maxWidth="40rem">
-      <div className={style["form-container"]}>
-        <form className={style["form"]} onSubmit={handleSubmit(submitHandler)}>
-          <h1 className={style["form__title"]}>Sign up</h1>
-          <FormElement
-            label="E-mail"
-            type="email"
-            id="email"
-            placeholder="Anne@wp.pl"
-            {...register("email")}
-            error={errors.email?.message}
-          />
-          <FormElement
-            label="Password"
-            type="password"
-            id="password"
-            placeholder="Piqon123"
-            {...register("password")}
-            error={errors.password?.message}
-          />
-          <Button type="submit" classNames={["btn", "btn--form"]}>
-            Login
-          </Button>
-          <p className={style["form__addition"]}>
-            If you dont have account{" "}
-            <Link to="/register" className={style["form__link"]}>
-              register!
-            </Link>
-          </p>
-        </form>
-      </div>
-    </Wrapper>
+    <Main>
+      <Wrapper maxWidth="40rem">
+        <div className={style["form-container"]}>
+          <form
+            className={style["form"]}
+            onSubmit={handleSubmit(submitHandler)}
+          >
+            <h1 className={style["form__title"]}>Sign up</h1>
+            <FormElement
+              label="E-mail"
+              type="email"
+              id="email"
+              placeholder="Anne@wp.pl"
+              {...register("email")}
+              error={errors.email?.message}
+            />
+            <FormElement
+              label="Password"
+              type="password"
+              id="password"
+              placeholder="Piqon123"
+              {...register("password")}
+              error={errors.password?.message}
+            />
+            <Button type="submit" classNames={["btn", "btn--form"]}>
+              Login
+            </Button>
+            <p className={style["form__addition"]}>
+              If you dont have account{" "}
+              <Link to="/register" className={style["form__link"]}>
+                register!
+              </Link>
+            </p>
+          </form>
+        </div>
+      </Wrapper>
+    </Main>
   );
 };

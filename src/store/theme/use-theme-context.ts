@@ -1,12 +1,7 @@
-import { useContext } from "react";
+import { useContextWithoutNull } from "../../hooks/use-context-without-null";
 import { ThemeContext } from "./theme-context";
 
 export const useThemeContext = () => {
-  const context = useContext(ThemeContext);
-
-  if (context === null) {
-    throw new Error("Customer must be in provider!");
-  }
-
-  return context;
+  const themeContext = useContextWithoutNull(ThemeContext);
+  return themeContext;
 };

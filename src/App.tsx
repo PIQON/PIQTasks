@@ -13,6 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <Navigate to="/" />,
     children: [
       {
         path: "/",
@@ -29,7 +30,6 @@ const router = createBrowserRouter([
             <Dashboard />
           </ProtectedRoute>
         ),
-        errorElement: <Navigate to="/" />,
       },
     ],
   },

@@ -21,7 +21,7 @@ export const ThemeContextProvider = ({ children }: ChildrenRoot) => {
     return "dark";
   };
 
-  const [theme, setTheme] = useState<Theme>(initialState);
+  const [theme, setTheme] = useState<Theme>(initialState());
 
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);

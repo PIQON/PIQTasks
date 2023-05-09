@@ -7,7 +7,7 @@ import style from "./todos.module.scss";
 
 export const Todos = () => {
   return (
-    <div className={style["todos"]}>
+    <main className={style["todos"]}>
       <TodosFilterContextProvider>
         <Wrapper maxWidth="35rem">
           <TodosHeader />
@@ -15,6 +15,6 @@ export const Todos = () => {
           <TodosList />
         </Wrapper>
       </TodosFilterContextProvider>
-    </div>
+    </main>
   );
 };
