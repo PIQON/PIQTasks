@@ -1,3 +1,4 @@
+import { useMediaQuery } from "../../../../hooks/use-media-query";
 import { Button } from "../../../ui/button/button";
 import { Filter } from "../../store/filter/todos-filter-context";
 import { useTodosFilterContext } from "../../store/filter/use-todos-filter-context";
@@ -25,10 +26,12 @@ const FILTERED_BUTTONS: FilterActionButtons[] = [
 
 export const FilterActions = () => {
   const { changeFilter } = useTodosFilterContext();
-
+  const matches = useMediaQuery("(max-width: 28.75rem)");
   return (
     <div
-      className={`${style["filter__actions"]} ${style["filter__actions--mobile"]}`}
+      className={`${style["filter__actions"]}  ${
+        matches && style["filter__actions--mobile"]
+      }`}
     >
       {FILTERED_BUTTONS.map((FILTER_BUTTON) => (
         <Button

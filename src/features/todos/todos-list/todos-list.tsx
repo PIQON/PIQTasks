@@ -18,8 +18,10 @@ export const TodosList = () => {
   const todosQuery =
     filter === "All"
       ? getUserFirebaseData(user)
-      : getUserFilteredFirebaseData(user, "isComplete", filter === "Active");
-  const todos = useFirestoreQuery(["todos", { filter }], todosQuery);
+      : getUserFilteredFirebaseData(user, "isComplete", filter === "Completed");
+  const todos = useFirestoreQuery(["todos", { filter }], todosQuery, {
+    subscribe: true,
+  });
 
   const snapshot = todos.data;
 
@@ -39,7 +41,7 @@ export const TodosList = () => {
       ) : (
         <p className={style["todos-list__results"]}>No todos found.</p>
       )}
-      <TodosFilter />
+      <TodosFilter itemsLeft={snapshot && snapshot.docs.length} />
     </div>
   );
 };

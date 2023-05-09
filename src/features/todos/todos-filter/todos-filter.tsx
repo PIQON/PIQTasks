@@ -1,15 +1,16 @@
-import { Button } from "../../ui/button/button";
 import { FilterActions } from "./filter-actions/filter-actions";
 import style from "./todos-filter.module.scss";
 
-export const TodosFilter = () => {
+type TodosFilterProps = {
+  itemsLeft: number | undefined;
+};
+
+export const TodosFilter = ({ itemsLeft = 0 }: TodosFilterProps) => {
+  console.log(itemsLeft);
   return (
     <div className={style["filter"]}>
-      <span className={style["filter__items"]}>5 items left</span>
+      <span className={style["filter__items"]}>{itemsLeft} items left</span>
       <FilterActions />
-      <Button type="button" classNames={["btn", "btn--filter"]}>
-        Clear Completed
-      </Button>
     </div>
   );
 };
