@@ -1,15 +1,16 @@
 <p id="readme-top"></p>
 <div align="center">
-  <h3 align="center">Users</h3>
+  <h3 align="center">PIQ Tasks</h3>
 
   <p align="center">
-     Manage users list with React!
+     Log in and create tasks you don't want to forget!
     <br />
     <br />
-    <a href="https://users-react.vercel.app/">View a project demo</a>
+    <a href="https://piq-tasks.vercel.app/">View a project demo</a>
   </p>
 
-![My Image](./src/assets/preview.png)
+![My Image](./src/assets/images/preview.png)
+![My Image](./src/assets/images/preview-dashboard.png)
 
 </div>
 
@@ -36,7 +37,9 @@
 
 ## About The Project
 
-You can only create users in a project..
+You have the option to log in and register taking into account the user's private tasks.
+We allow you to edit, add, delete tasks.
+In addition, you have the option to change the color theme.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -47,8 +50,11 @@ Technologies used:
 - ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 - ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 - ![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
+- ![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
+- ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+- ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 - ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
-- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+- ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 - ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -56,6 +62,20 @@ Technologies used:
 <!-- GETTING STARTED -->
 
 ## Getting Started
+
+### ENVIRONMENT VARIABLES
+
+You need to add environment variables supporting config firebase.
+
+```sh
+  VITE_FIREBASE_APIKEY
+ITE_FIREBASE_AUTHDOMAIN
+ITE_FIREBASE_PROJECTID
+VITE_FIREBASE_STORAGEBUCKET
+ITE_FIREBASE_MESSAGINGSENDERID
+ITE_FIREBASE_APPID
+ITE_FIREBASE_MEASUREMENTID
+```
 
 1. Run server
 
